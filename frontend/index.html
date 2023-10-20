@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="V8bjQKRE67Lqf9b8DtOOvV80Id3hilUQiNDXcNeRx8Q" />
+    <title>V Snake</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!----<video id="background-video" autoplay loop muted >
+        <source src="./game-video.mp4" type="video/mp4">
+    </video>---->
+    <section class="vh-100">
+        <div class="container h-100">
+            <div id="initialScreen" >
+                
+                <button class="instructions-button" onclick="toggleInstructions()">Instructions</button>
+                
+                <div class="instructions-container">
+                    <button class="close-button" onclick="toggleInstructions()"></button>
+                    <h2 class="instructions-header">Instructions</h2>
+                    <ul class="instructions-list">
+                        <li>Player can Create or join a game.</li>
+                        <li>Player has to share the game code to his enemy.</li>
+                        <li>The person Creates the game will get the Blue Snake <img src="./assets/snake-head.png" alt="blue-snake-head" style="width: 15px; height: 15px;"></li>
+                        <li>Other person will get the Yellow Snake <img src="./assets/enemy-head.png" alt="blue-snake-head" style="width: 15px; height: 15px;"></li>
+                        <li>Game starts when second person joins.</li>
+                        <li>Use arrow keys to move.</li>
+                        <li>Collect apples <img src="./assets/apple.png" alt="apple" style="width: 15px; height: 15px;"> to increase score.</li>
+                        <li>First Person to collect 10 apples wins.</li>
+                        <li>Avoid wall and body bumps to stay alive.</li>
+                    </ul>
+                </div>
+
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <img src="logo.avif" alt="Snake logo">
+                    <button 
+                        type="submit"    
+                        class=" game-button"
+                        id="newGameButton"
+                    >
+                    Request Multi player
+                    </button>
+                    <button 
+                        type="submit"    
+                        class=" game-button"
+                        id="newGameButton"
+                        onsubmit=""
+                    ><a href="single player.html">
+                    Single player
+                </a>
+                    </button>
+                    <div id="or">OR</div>
+                    <!-- <div class="form-group">
+                        <input type="text" placeholder="Enter Game Code" id="gameCodeInput">
+                    </div> -->
+                    <div class="form-group form">
+                        <input type="text" id="gameCodeInput" class="form__input" placeholder=" ">
+                        <label for="gameCodeInput" class="form__label">Enter Game Code</label>
+                      </div>
+                    <button
+                        type="submit"
+                        class=" game-button green "
+                        id="joinGameButton"
+                    >
+                        Join present Game
+                    </button>
+                </div>
+            </div>
+
+            <div id="gameScreen" class="h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+
+                    <div id="wait">
+                        <h1 id="gameCode">Your game code is: <span id="gameCodeDisplay"></span></h1>
+                        <h1>Waiting for other player to join </h1>
+                        <div class="load"></div>
+                    </div>
+                    <div id="score" style="display: none;"><img src="./assets/snake-head.png" alt="Player-1"> score player 1: <span id="foodCount1">0</span>&nbsp; &nbsp;<img src="./assets/enemy-head.png" alt="Player-2"> score playeer 2: <span id="foodCount2">0</span> <span id="target"></span>
+                        <select>
+                            <option> easy
+                            </option>
+                            <option>
+                                medium
+                            </option>
+                            <option>
+                                hard
+                            </option>
+                        </select>
+                        <button>
+                            pause
+                        </button>
+                        <div style="background: #000000;">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
