@@ -1,7 +1,5 @@
-[build.environment] =
+[build.enviroment]
+  command = "npm start"  
 
- command = "npm run build" 
-
-  environment = { 
-    NODE_ENV = "production" 
-  }
+[dev]
+  command = "npm start"    
